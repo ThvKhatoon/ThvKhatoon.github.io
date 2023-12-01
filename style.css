@@ -111,6 +111,6 @@ hr {
 footer {
    background: var(--primary-0);
    color: var(--primary-70);
-   padding: 10px;
+   padding: 20px;
    text-align: center;
 }
