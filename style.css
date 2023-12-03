@@ -1,6 +1,15 @@
+@import url(font-awesome/css/all.css);
 @font-face {
    font-family: "IRANSans";
    src: url(font/IRANSans.ttf);
+}
+@font-face {
+   font-family: 'OP';
+   src: url('font/NotoSansOldPersian-Regular.ttf');
+}
+@font-face {
+   font-family: 'Lalezar';
+   src: url('font/Lalezar.otf') format('opentype');
 }
 @font-face {
    font-family: "TiltNeon";
@@ -9,6 +18,11 @@
 @font-face {
    font-family: "NotoEmoji";
    src: url(font/NotoEmoji.ttf);
+}
+:root {
+   --fa-clr-color: var(--primary);
+   --fa-secondary-color: currentColor;
+   --fa-secondary-opacity: 1;
 }
 * {
    -webkit-tap-highlight-color: #0000;
@@ -27,21 +41,47 @@ body {
    color: var(--on-background);
 }
 header {
-   background: var(--surface-variant);
+   width: 100%;
+   display: flex;
+   flex-flow: row-reverse nowrap;
+   justify-content: space-between;
+   align-items: center;
+   height: 60px;
+   background: var(--glass-variant);
+   backdrop-filter: blur(10px);
    text-align: center;
    font-size: 38px;
    padding: 10px;
-   box-shadow: 0 0 20px #0005;
+   /* box-shadow: 0 0 20px #0005; */
+   z-index: 1;
+   position: sticky;
+   top: 0;
+}
+header div{
    font-family: "TiltNeon";
+}
+header div.title{
+   padding-inline: 10px;
+}
+header div.ic{
+   aspect-ratio: 1/1;
+   height: 100%;
+   border-radius: 10px;
+   display: flex;
+   flex-flow: row-reverse nowrap;
+   justify-content: center;
+   align-items: center;
+   font-size: 0.8em;
+   transition: 0.3s;
+   cursor: pointer;
+}
+header div.ic:hover {
+   background: var(--surface-variant);
 }
 main {
    padding: 20px;
 }
-.flex{
-   opacity: 0;
-   transition: 1s 0.5s;
-}
-#start{
+#start {
    text-align: center;
    font-size: 60px;
    font-weight: 400;
@@ -50,21 +90,43 @@ main {
    margin-bottom: 10px;
    border-radius: 20px;
 }
-#list {
+#start span {
+   font-family: "Lalezar";
+}
+.list {
    background: var(--surface);
    padding: 10px;
    border-radius: 20px;
+}
+.bar {
+   width: 100%;
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px;
+   background: var(--surface);
+   color: var(--on-surface);
+   margin: 10px 0;
+   border-radius: 20px;
+}
+.bar span {
+   font-family: "OP";
 }
 .flex {
    display: flex;
    flex-flow: row wrap;
    justify-content: space-between;
    align-items: stretch;
+   transition: 1s 0.4s;
+   opacity: 0;
 }
 .flex>* {
    width: 100%;
+   padding: 10px;
+}
+.flex>div:nth-child(2) {
    text-align: center;
-   padding: 20px;
 }
 @media screen and (min-width: 400px) {
    .flex:nth-child(2n) {
@@ -73,31 +135,40 @@ main {
       justify-content: flex-start;
       align-items: stretch;
    }
+
    .flex>* {
       flex: 1 1 50%;
    }
 }
-h1::before{
-   content: "💙";
-   color: var(--on-primary);
-   margin-inline: 10px;
-   padding: 4px;
-   background: var(--primary);
-   border-radius: 10px;
-   aspect-ratio: 1/1;
-   vertical-align: middle;
-   font-size: 16px;
+h1,
+h3 {
+   text-align: right;
 }
-h3::before{
-   content: "🫐";
-   color: var(--on-primary);
-   margin-inline: 10px;
-   padding: 4px;
+h1::before {
+   content: "𐎠";
    background: var(--primary);
+   color: var(--on-primary);
+   box-shadow: 0 0 20px -5px var(--primary);
+}
+h3::before {
+   content: "𐏁";
+   color: var(--on-secondary);
+   background: var(--secondary);
+   box-shadow: 0 0 10px var(--secondary);
+}
+h3::before,
+h1::before {
+   margin-inline: 10px;
    border-radius: 10px;
    aspect-ratio: 1/1;
    vertical-align: middle;
-   font-size: 16px;
+   font-size: 18px;
+   width: 30px;
+   display: inline-flex;
+   flex-flow: row nowrap;
+   justify-content: center;
+   align-items: center;
+   font-family: "OP";
 }
 img {
    max-width: 100%;
@@ -109,13 +180,16 @@ hr {
    border: none;
    border-top: dashed 5px var(--surface-variant);
 }
-#top-bar{
+.p {
+   color: var(--primary);
+}
+#top-bar {
    position: fixed;
    right: 0;
-   top: 0;
+   top: 60px;
    width: 0;
    height: 5px;
-   background: var(--primary);
+   background: linear-gradient(45deg, var(--primary), var(--secondary));
    box-shadow: 0 0 20px var(--primary);
    z-index: 2;
 }
@@ -124,17 +198,4 @@ footer {
    color: var(--primary-70);
    padding: 20px;
    text-align: center;
-}
-
-@keyframes show {
-   0%{
-      position: relative;
-      top: 120px;
-      opacity: 0;
-   }
-   100%{
-      position: relative;
-      top: 0px;
-      opacity: 1;
-   }
 }

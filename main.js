@@ -1,5 +1,5 @@
 var M = Mushroom();
-M.setColor('hsl(220,100%,40%)');
+M.setColor('hsl(230,80%,40%)');
 M.setDarkmode(false);
 
 var body = document.body;
