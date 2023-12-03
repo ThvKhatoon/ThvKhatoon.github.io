@@ -3,6 +3,10 @@
    src: url(font/IRANSans.ttf);
 }
 @font-face {
+   font-family: "TiltNeon";
+   src: url(font/TiltNeon.ttf);
+}
+@font-face {
    font-family: "NotoEmoji";
    src: url(font/NotoEmoji.ttf);
 }
@@ -23,14 +27,19 @@ body {
    color: var(--on-background);
 }
 header {
-   background: var(--surface);
+   background: var(--surface-variant);
    text-align: center;
-   font-size: 32px;
+   font-size: 38px;
    padding: 10px;
    box-shadow: 0 0 20px #0005;
+   font-family: "TiltNeon";
 }
 main {
    padding: 20px;
+}
+.flex{
+   opacity: 0;
+   transition: 1s 0.5s;
 }
 #start{
    text-align: center;
@@ -53,6 +62,8 @@ main {
    align-items: stretch;
 }
 .flex>* {
+   width: 100%;
+   text-align: center;
    padding: 20px;
 }
 @media screen and (min-width: 400px) {
@@ -113,4 +124,17 @@ footer {
    color: var(--primary-70);
    padding: 20px;
    text-align: center;
+}
+
+@keyframes show {
+   0%{
+      position: relative;
+      top: 120px;
+      opacity: 0;
+   }
+   100%{
+      position: relative;
+      top: 0px;
+      opacity: 1;
+   }
 }
