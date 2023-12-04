@@ -32,6 +32,10 @@
 html {
    scroll-behavior: smooth;
 }
+::selection{
+   background: var(--primary-container);
+   color: var(--on-primary-container);
+}
 /* layout */
 body {
    padding: 0;
@@ -39,6 +43,7 @@ body {
    font-size: 16px;
    background: var(--background);
    color: var(--on-background);
+   transition: 0.3s;
 }
 header {
    width: 100%;
@@ -76,7 +81,7 @@ header div.ic{
    cursor: pointer;
 }
 header div.ic:hover {
-   background: var(--surface-variant);
+   background: var(--glass-variant);
 }
 main {
    padding: 20px;
@@ -118,7 +123,9 @@ main {
    flex-flow: row wrap;
    justify-content: space-between;
    align-items: stretch;
-   transition: 1s 0.4s;
+   transition-property: all, opacity;
+   transition-duration: 0.3s, 1s;
+   transition-delay: 0, 0.4s;
    opacity: 0;
 }
 .flex>* {
@@ -154,7 +161,7 @@ h3::before {
    content: "𐏁";
    color: var(--on-secondary);
    background: var(--secondary);
-   box-shadow: 0 0 10px var(--secondary);
+   box-shadow: 0 0 10px -5px var(--secondary);
 }
 h3::before,
 h1::before {
@@ -173,7 +180,11 @@ h1::before {
 img {
    max-width: 100%;
    border-radius: 20px;
-   box-shadow: 0 5px 20px #0008;
+   box-shadow: 0 0 0 -5px #0005;
+   transition: 0.3s;
+}
+img:hover{
+   box-shadow: 5px 5px 20px -5px #0005;
 }
 hr {
    height: 0;
