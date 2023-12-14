@@ -1,5 +1,5 @@
 var M = Mushroom();
-M.setColor('hsl(230,80%,40%)');
+M.random();
 M.setDarkmode(false);
 
 var body = document.body;
@@ -7,8 +7,6 @@ var bar = document.querySelector('#top-bar');
 window.onscroll = () => {
    var val = window.scrollY / (body.scrollHeight - window.innerHeight);
    bar.style.width = val * 100 + '%';
-   var num = window.scrollY / (body.scrollHeight - window.innerHeight) * 80;
-   M.setHue(num + 230);
 };
 
 var sections = document.querySelectorAll('.flex');
